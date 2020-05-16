@@ -1,0 +1,48 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+
+
+/*xử lý menu*/
+.dropdown{
+	position: relative;;
+	display: inline-block;
+}
+
+.dropdown-content{
+	display: none;
+	position: absolute;
+	z-index: 1;
+	background-color: #f3f3f3;
+}
+
+.dropdown:hover .dropdown-content{
+	display: block;
+}
+
+
+
+.nameroom{
+	width: 100%;
+    text-transform: uppercase;
+    margin: 0px 5px;
+    color: #b0b0b0;
+    text-align: center;
+   
+  }
+h4{
+	font-family: inherit;
+}
+
+.name_sv{
+	text-transform: uppercase;
+	color: #e3ac50;
+}
+
+.cuoi{
+	background-color: orange;
+	width: 100%;
+}
+
