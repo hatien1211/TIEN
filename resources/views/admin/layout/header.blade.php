@@ -10,9 +10,9 @@
             <div class='nav-item dropdown' style='width: 180px'>
                     <a class='nav-link dropdown-toggle' id='navbarDropdown'><i class='fas fa-user'></i><b style='color: gray;'> tên users</b></a>
                         <div class='dropdown-content' style='width: 100%'>
-                            <a class='dropdown-item' href='formdoimatkhau.php'>Đổi mật khẩu</a>
+                            
                             <div class='dropdown-divider'></div>
-                            <a class='dropdown-item' href='index.php'>Trở về trang chủ</a>
+                            <a class='dropdown-item' href="{{route('index')}}">Trở về trang chủ</a>
                             <div class='dropdown-divider'></div>
                             <a class='dropdown-item' href='dangxuat.php'>Đăng xuất</a>
                             <div class='dropdown-divider'></div>

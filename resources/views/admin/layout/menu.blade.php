@@ -16,8 +16,8 @@
 				    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
 				      <div class="card-body">
 				        <ul class="list-group list-group-flush" style="width: 100%">
-						  <li class="list-group-item">First item</li>
-						  <li class="list-group-item">Second item</li>
+						  <li class="list-group-item" ><a href="{{route('listsPhong')}}">Danh Sách</a></li>
+							  <li class="list-group-item"><a href="{{route('show_addphong')}}">Thêm</a></li>
 						</ul>
 				      </div>
 				    </div>
@@ -84,6 +84,7 @@
 				</div>
 
 
+
 			 	<div class="card">
 				    <div class="card-header" id="headingSix">
 				      <h2 class="mb-0">
@@ -120,6 +121,26 @@
 						</ul>
 				      </div>
 				    </div>		
+				</div>
+
+
+				<div class="card">
+				    <div class="card-header" id="headingSeven">
+				      <h2 class="mb-0">
+				        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+				          ẢNH
+				        </button>
+				      </h2>
+				    </div>
+
+				    <div id="collapseEight" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+					    <div class="card-body">
+					        <ul class="list-group list-group-flush" style="width: 100%">
+							  <li class="list-group-item" ><a href="{{route('listsanhlq')}}">Danh Sách</a></li>
+							  <li class="list-group-item"><a href="{{route('show_addanhlq')}}">Thêm</a></li>
+							</ul> 
+					    </div>
+				 	</div>
 				</div>
 
 

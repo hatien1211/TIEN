@@ -14,7 +14,7 @@ class CreateDondatTable extends Migration
     public function up()
     {
         Schema::create('dondat', function (Blueprint $table) {
-             $table->smallIncrements('dd_id');
+            $table->smallIncrements('dd_id');
             $table->unsignedsmallInteger('users_id');
             $table->date('ngaylap');
             $table->integer('tongtien');

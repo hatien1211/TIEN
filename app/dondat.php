@@ -31,3 +31,4 @@ class dondat extends Model
     public function chitiethoadon (){
    		return $this->hasMany('App\comment','dd_id','dd_id');
 }
+}

@@ -25,4 +25,5 @@ class comment extends Model
 
     public function user(){
     	return $this->belongsTo('App\users','users_id','users_id');
+    }
 }

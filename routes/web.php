@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
 
 
 
@@ -25,7 +27,7 @@ Route::get('index-admin',function()
 });
 	
 Route::get('index-guest',function(){
-	return view('fontend.index');
+	return view('frontend.pages.phong');
 });
 
 Route::get('dangki',function(){
@@ -91,19 +93,23 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('/xoa/{id}','PhongController@getXoa')->name('del_phong');
 	});
 
-	// Route::group(['prefix'=>'phong'],function(){
-	// 	Route::get('/danhsach','PhongController@getDanhSach')->name('listsPhong');
 
-	// 	Route::get('/them','PhongController@getThem')->name('show_addphong');
-	// 	Route::post('/them-phong','PhongController@postThem')->name('add_phong');
+	Route::group(['prefix'=>'AnhLQ'],function(){
+		Route::get('/danhsach','AnhLQController@getDanhSach')->name('listsanhlq');
 
-	// 	Route::get('/sua/{id}','PhongController@getSua')->name('show_fixphong');
-	// 	Route::post('/sua-phong/{id}','PhongController@postSua')->name('fix_phong');
+		Route::get('/them','AnhLQController@getThem')->name('show_addanhlq');
+		Route::post('/them-anh','AnhLQController@postThem')->name('add_anhlq');
 
-	// 	Route::get('/xoa/{id}','PhongController@getXoa')->name('del_phong');
-	// });
+		Route::get('/sua/{id}','AnhLQController@getSua')->name('show_fixanhlq');
+		Route::post('/sua-anh/{id}','AnhLQController@postSua')->name('fix_anhlq');
 
-
-
+		Route::get('/xoa/{id}','AnhLQController@getXoa')->name('del_anhlq');
+	});
 	
 });
+
+
+
+Route::get('/','PagesController@header')->name('index');
+Route::get('dichvu','PagesController@dichvu')->name('dichvu');
+Route::get('phongdetail/{id}','PagesController@detailphong')->name('chitietphong');

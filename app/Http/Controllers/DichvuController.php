@@ -67,12 +67,12 @@ class DichvuController extends Controller
 
     public function postSua(Request $request, $id){
     	Validator::make($request->all(), [
-            'dv_ten' => 'required|unique:dichvu',
+            'dv_ten' => 'required',
             'dv_thongtin' => 'required|min:8',
             
             ],[
             'dv_ten.required' => 'Bạn chưa nhập tên dịch vụ',
-            'dv_ten.unique'=>'Tên dịch vụ đã tồn tại',
+            //'dv_ten.unique'=>'Tên dịch vụ đã tồn tại',
             'dv_thongtin.required'=>'Bạn chưa điền vào thông tin dịch vụ',
             'dv_thongtin.min'=>'Thông tin dịch vụ phải ít nhất 8 kí tự'
             ])->validate();
