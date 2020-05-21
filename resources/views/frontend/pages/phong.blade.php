@@ -35,7 +35,7 @@
 			<!-- THÔNG TIN PHÒNG        -->
 			<!-- FORM ĐẶT PHÒNG -->
 			<div class="col-lg-4">
-				<form action="#" class="p-5 bg-white">
+				<form action="{{route('datphong',['id'=>$p1->p_id])}}" class="p-5 bg-white">
 					<div class="p-4 mb-3 bg-white">
 						<h3 class="h5 text-black mb-3">Đặt phòng</h3>
 					</div>

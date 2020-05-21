@@ -18,7 +18,6 @@ class CreateChitietdondatTable extends Migration
             $table->unsignedSmallInteger('p_id');
             $table->date('checkin');
             $table->date('checkout');
-            $table->integer('dongia');
             $table->primary(['dd_id', 'p_id']);
             $table->foreign('dd_id')->references('dd_id')->on('dondat')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreign('p_id')->references('p_id')->on('phong')->onDelete('CASCADE')->onUpdate('CASCADE');

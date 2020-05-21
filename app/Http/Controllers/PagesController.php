@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\phong;
 use App\chitietdondat;
@@ -12,7 +13,7 @@ use App\anhlienquan;
 use DB;
 use Validator;
 use Session;
-
+use Carbon\Carbon;
 class PagesController extends Controller
 {
     function __construct(){
@@ -55,48 +56,42 @@ class PagesController extends Controller
     }
 
 
-    public function datphong(){
-        Validator::make($request->all(), [
-            'username' => 'required|min:8|unique:users',
-            'password' => 'required|min:8|max:32',
-            'passwordAgain' => 'required|same:password',
-            'hoten' => 'required|min:3',
-            'ngaysinh' => 'required',
-            'gioitinh' => 'required',
-            'sdt' => 'required|min:10',
-            'cmnd' => 'required|min:9|max:9',
-            'quyen' => 'required'
-            ],[
-            'username.required' => 'Bạn chưa nhập tên người dùng',
-            'username.min'=>'Tên đăng nhập phải có ít nhất 8 kí tự',
-            'username.unique' => 'Tên đăng nhập đã tồn tại',
-            'password.required' => 'Bạn chưa nhập password',
-            'password.min' => 'Mật khẩu phải có ít nhất 8 kí tự',
-            'password.max' => 'Mật khẩu chỉ tối đa 32 kí tự',
-            'passwordAgain.required' => 'Bạn chưa nhập lại mật khẩu',
-            'passwordAgain.same' => 'Mật khẩu nhập lại chưa trùng khớp',
-            'hoten.required' => 'Bạn chưa nhập họ tên',
-            'hoten.min' => 'Họ tên phải ít nhất 3 kí tự',
-            'ngaysinh.required' => 'Bạn chưa nhập vào ngày sinh',
-            'gioitinh.required' => 'Bạn chưa nhập vào giới tính',
-            'sdt.required' => 'Bạn chưa nhập số điện thoại',
-            'sdt.min' => 'Số điện thoại phải ít nhất 10 kí tự',
-            'cmnd.required' => 'Bạn chưa nhập số CMND',
-            'cmnd.min' => 'Số CMND chỉ được 9 kí tự'
-            ])->validate();
+    public function datphong($id, Request $request){
+        // Validator::make($request->all(), [
+        //     'checkin' => 'required',
+        //     'checkout' => 'required',
+        //     'p_slmax' => 'required'
+        //     ],[
+        //     'checkin.required' => 'Bạn chưa nhập ngày nhận phòng',
+        //     'checkout.required'=>'Tên đăng nhập phải có ít nhất 8 kí tự',
+        //     'p_slmax.required' => 'Tên đăng nhập đã tồn tại',
+            
+        //     ])->validate();
+        $room = phong::find($id);
+        $giohientai = Carbon::now('Asia/Ho_Chi_Minh'); 
 
-        $user = new users();
-        $user->username = $request->username; 
-        $user->password = bcrypt($request->password);
-        $user->hoten = $request->hoten;
-        $user->ngaysinh = $request->ngaysinh;
-        $user->gioitinh = $request->gioitinh;
-        $user->sdt = $request->sdt;
-        $user->cmnd = $request->cmnd;
-        $user->quyen = $request->quyen;
-        $user->save();
 
-        Session::flash('alert-info', 'Thêm thành công!!!');
-        return redirect()->route('show_addusers');
+        $ctdd = new chitietdondat();
+        $dd = new dondat();
+
+        if($giohientai > $ctdd->checkout){
+            $room->p_slp = $room->p_slp + 1;
+        }
+
+        $room->p_slp =  $room->p_slp - 1;
+        $dd->users_id = Auth::user()->users_id;
+        $dd->ngaylap = $giohientai; 
+        $songay= (strtotime($ctdd->checkout) - strtotime($ctdd->checkin))/(60*60*24);
+        $dd->tongtien = $room->p_gia * $songay;
+        
+        $room->save();
+        $dd->save();
+        $ctdd->dd_id = $dd->dd_id; 
+        $ctdd->p_id = $id;
+        $ctdd->checkin = $request->checkin;
+        $ctdd->checkout = $request->checkout;
+        $ctdd->save();
+         Session::flash('alert-info', 'Thêm thành công!!!');
+         return redirect()->route('index');
     }
 }

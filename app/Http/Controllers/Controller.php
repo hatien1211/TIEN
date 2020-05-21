@@ -11,5 +11,12 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
+	    // function __construct(){
+	    // 	$this.login();
+	    // }
+	    // function login(){
+	    // 	if(Auth::guard('users')->check()){
+	    // 		view()->share('users_login',Auth::users());
+	    // 	}
+	    // }
 }

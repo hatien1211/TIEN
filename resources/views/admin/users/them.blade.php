@@ -32,7 +32,7 @@
                               </label>
                             
                               <label class='form-check-label' style='margin-left: 250px'>
-                                <input type='radio' style='size:50px' class='form-check-input' value='0' name='giotinh'>Nữ
+                                <input type='radio' style='size:50px' class='form-check-input' value='0' name='gioitinh'>Nữ
                               </label>
                             
                     </td></tr>

@@ -31,8 +31,8 @@
               
                         <form class="login-container" action="{{route('xl_dangnhap')}}" method="post">
                           @csrf
-                          @extends('admin.layout.partials.error-message')
-                          @extends('admin.layout.partials.complete-message')
+                          <!-- @extends('admin.layout.partials.error-message')
+                          @extends('admin.layout.partials.complete-message') -->
                             <input type="text" class="form-control"   name="username"  placeholder="Enter username" required>
                             <p style="margin-bottom: 3px ; font-size: 10px"></p>
                              <input type="password" placeholder="Password"  name="password" required="">

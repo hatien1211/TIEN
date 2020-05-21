@@ -33,10 +33,11 @@ Route::get('index-guest',function(){
 Route::get('dangki',function(){
 	return view('fontend.dangki');
 })->name('dangki');
-
-Route::get('/admin/dangnhap','AuthController@getdangnhapAdmin')->name('dangnhap');
-Route::post('/admin/dangnhap','AuthController@postdangnhapAdmin')->name('xl_dangnhap');
-
+Route::get('/dangki','AuthController@getsignup')->name('dangki');
+Route::post('/dangki','AuthController@postsignup')->name('xl_dangki');
+Route::get('/dangnhap','AuthController@getdangnhapAdmin')->name('dangnhap');
+Route::post('/dangnhap','AuthController@postdangnhapAdmin')->name('xl_dangnhap');
+Route::get('/dangxuat','AuthController@logout')->name('dangxuat');
 
 //nhóm admin
 Route::group(['prefix'=>'admin'],function(){
@@ -106,6 +107,7 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('/xoa/{id}','AnhLQController@getXoa')->name('del_anhlq');
 	});
 	
+	Route::get('/datphong/{id}','PagesController@datphong')->name('datphong');
 });
 
 

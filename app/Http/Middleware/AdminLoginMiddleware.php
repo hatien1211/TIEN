@@ -17,7 +17,7 @@ class AdminLoginMiddleware
     {
 
         if(Auth::check()){
-            $users=Auth::users();
+            $users=Auth::user();
             if($users->quyen == 1){
                 return $next($request);        
             }else{

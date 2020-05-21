@@ -56,7 +56,7 @@ class PhongController extends Controller
             }
 
             $name = $file->getClientOriginalName();
-           $file->move("IMG.phong",$name);
+           //$file->storeAs("public/IMG/phong",$name);
             $phong->p_img = $name;
 
         }else{
