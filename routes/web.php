@@ -108,8 +108,11 @@ Route::group(['prefix'=>'admin'],function(){
 	});
 	
 	Route::get('/datphong/{id}','PagesController@datphong')->name('datphong');
+	
 });
 
+Route::get('/dondat','PagesController@dondat')->name('dondat');
+Route::get('/chitietdondat/{id}','PagesController@chitietdondat')->name('chitietdondat');
 
 
 Route::get('/','PagesController@header')->name('index');

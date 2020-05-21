@@ -3,12 +3,13 @@
 <!-- CONTENT   -->
 <div class="site-section site-section-sm">
 	<div class="container">
-		@extends('admin.layout.partials.error-message')
-
-        @extends('admin.layout.partials.complete-message')
+		
 		<div class="row">
 			<!-- THÔNG TIN PHÒNG        -->
 			<div class="col-md-8 col-lg-8 mb-5">
+				@extends('admin.layout.partials.error-message')
+
+        		@extends('admin.layout.partials.complete-message')
 				<div class="section-heading text-left">
               <h2 class="mb-5">{{$p1->p_ten}}</h2>
             </div>

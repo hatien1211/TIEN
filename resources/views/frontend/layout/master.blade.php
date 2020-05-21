@@ -32,7 +32,7 @@
   
     
 @include('frontend.layout.header')
-<!-- @include('frontend.layout.slide') -->
+@include('frontend.layout.slide')
 @yield('content')
     
 @include('frontend.layout.footer')
@@ -54,7 +54,7 @@
   <script src="asset/frontend/js/mediaelement-and-player.min.js"></script>
 
   <script src="asset/frontend/js/main.js"></script>
-    
+    @yield('script');
 
   <!-- <script>
       document.addEventListener('DOMContentLoaded', function() {

@@ -57,6 +57,7 @@ class PagesController extends Controller
 
 
     public function datphong($id, Request $request){
+      
         // Validator::make($request->all(), [
         //     'checkin' => 'required',
         //     'checkout' => 'required',
@@ -65,7 +66,7 @@ class PagesController extends Controller
         //     'checkin.required' => 'Bạn chưa nhập ngày nhận phòng',
         //     'checkout.required'=>'Tên đăng nhập phải có ít nhất 8 kí tự',
         //     'p_slmax.required' => 'Tên đăng nhập đã tồn tại',
-            
+        //     'checkin.required' > 'checkout.required' => 'Bạn đã chọn sai ngày'
         //     ])->validate();
         $room = phong::find($id);
         $giohientai = Carbon::now('Asia/Ho_Chi_Minh'); 
@@ -81,17 +82,34 @@ class PagesController extends Controller
         $room->p_slp =  $room->p_slp - 1;
         $dd->users_id = Auth::user()->users_id;
         $dd->ngaylap = $giohientai; 
+        $ctdd->checkin = $request->checkin;
+        $ctdd->checkout = $request->checkout;
         $songay= (strtotime($ctdd->checkout) - strtotime($ctdd->checkin))/(60*60*24);
         $dd->tongtien = $room->p_gia * $songay;
-        
         $room->save();
         $dd->save();
         $ctdd->dd_id = $dd->dd_id; 
         $ctdd->p_id = $id;
-        $ctdd->checkin = $request->checkin;
-        $ctdd->checkout = $request->checkout;
+
         $ctdd->save();
          Session::flash('alert-info', 'Thêm thành công!!!');
          return redirect()->route('index');
+
+        
+
+        
+    }
+
+
+    public function dondat(){
+        return view('frontend.pages.dondat');
+    }
+
+    public function chitietdondat($id){
+      // $chitiet123 = chitietdondat::find($id)->get();
+        $chitiet123 = chitietdondat::where('dd_id', $id)->get();
+        //return $chitiet123;
+        return view('frontend.pages.chitietdondat')
+        ->with('chitiet',$chitiet123);
     }
 }
