@@ -44,8 +44,8 @@
                         <li class="has-children">
                         <a href="#">{{$auth->username}} &nbsp&nbsp&nbsp</a>
                         <ul class="dropdown">
+                          <li><a href="{{route('dondat')}}">Đơn hàng</a></li>
                           <li><a href="{{route('dangxuat')}}">Đăng xuất</a></li>
-                          
                         </ul>
                       </li>
 

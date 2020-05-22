@@ -27,7 +27,8 @@
               <td> {{$u->ngaylap}}</td>
               <td> {{$u->tongtien}}</td>
               <td><i class='fas fa-trash-alt'></i>
-                <a href="{{route('chitietdondat',['id'=>$u->dd_id])}}"><button type="button" class="btn btn-info">Chi tiết</button></a></td>
+                <!-- <a href="{{route('chitietdondat',['id'=>$u->dd_id])}}"><button type="button" class="btn btn-info">Chi tiết</button></a></td> -->
+                <button type="button" class="btn btn-info" onclick="showchitietdondat({{$u->dd_id}})">Chi tiết</button>
               </tr>
               @endforeach
             </tbody>
@@ -36,10 +37,51 @@
         </div>
         <!-- FORM ĐẶT PHÒNG -->
           
-        
+        <div class="col-lg-4" id="get">
+          
+        </div>
 <!-- FORM ĐẶT PHÒNG -->
       </div>
     </div>
   </div>
   
+  @endsection
+
+  @section('script')
+  <script type="text/javascript">
+    // function showchitietdondat(str) {
+    //     var xhttp = new XMLHttpRequest();
+    //     xhttp.onreadystatechange = function() {
+    //     if(this.readyState == 4 && this.status == 200) {
+    //         document.getElementById("get").innerHTML =
+    //         this.responseText;
+    //       }
+    //     };
+    //     xhttp.open("GET", "./chitietdondat/" + str, true);
+    //     xhttp.send();
+    //   }
+      //     $(document).ready(function(){
+      //   $("#load").change(function(){
+      //     var idLoad = $(this).val();
+      //     $.get("chitietdondat"+idLoad,function(data){
+      //       $("#get").html(data);
+      //     }
+      //   });
+      // }); 
+ function showchitietdondat(str) {
+  if (str.length == 0) {
+    document.getElementById("get").innerHTML = "";
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("get").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET", "./admin/chitietdondat/" + str, true);
+    xmlhttp.send();
+  }
+}
+</script>
   @endsection
