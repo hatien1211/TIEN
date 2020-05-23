@@ -40,7 +40,7 @@ Route::post('/dangnhap','AuthController@postdangnhapAdmin')->name('xl_dangnhap')
 Route::get('/dangxuat','AuthController@logout')->name('dangxuat');
 
 //nhóm admin
-Route::group(['prefix'=>'admin'],function(){
+Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 
 
 	Route::group(['prefix'=>'users'],function(){
@@ -115,7 +115,7 @@ Route::get('/chitietdondat/{id}','PagesController@chitietdondat')->name('chitiet
 });
 
 
-
+Route::post('/comment/{id}','CommentController@postComment')->name('comment');
 
 Route::get('/','PagesController@header')->name('index');
 Route::get('dichvu','PagesController@dichvu')->name('dichvu');

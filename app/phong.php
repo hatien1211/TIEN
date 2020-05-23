@@ -26,4 +26,7 @@ class phong extends Model
     public function anhlienquan (){
         return $this->hasMany('App\anhlienquan','p_id','p_id');// agurement 1: model, arg2: foreignkey of comments on comment, arg3 is primiryKey on users
     }
+    public function comment (){
+        return $this->hasMany('App\comment','p_id','p_id');// agurement 1: model, arg2: foreignkey of comments on comment, arg3 is primiryKey on users
+    }
 }

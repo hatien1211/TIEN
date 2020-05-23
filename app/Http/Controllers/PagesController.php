@@ -23,7 +23,7 @@ class PagesController extends Controller
         $slide = slide::all();
         $dondat = dondat::all();
         $chitietdondat = chitietdondat::all();
-        $comment = comment::all();
+       
         $anhlienquan = anhlienquan::all();
         view()->share('phong',$phong);
         view()->share('dichvu',$dichvu);
@@ -31,7 +31,7 @@ class PagesController extends Controller
         view()->share('slide',$slide);
         view()->share('dondat',$dondat);
         view()->share('chitietdondat',$chitietdondat);
-        view()->share('comment',$comment);
+        
         view()->share('anhlienquan',$anhlienquan);
         
     }
@@ -49,25 +49,41 @@ class PagesController extends Controller
             ->where('phong.p_id',$id)
             ->select('anhlienquan.imglq_img')
             ->get();
-        //return $phong;
+      
+       $cmt = DB::table('comment')
+            ->leftJoin('phong', 'phong.p_id', '=', 'comment.p_id')
+            ->where('phong.p_id',$id)
+            ->select('*')
+            ->get();
+       $hihi = DB::table('comment')->leftJoin('users', 'users.users_id', '=', 'comment.users_id')
+       ->where('comment.p_id',$id)
+       ->select('users.username')
+       ->limit(1)
+       ->get();
+        //return $hihi;
+        
+
+        //return $cmt1;
         return view('frontend.pages.phong')->with('p1',$phong)
+                                            ->with('cmt',$cmt)
+                                            ->with('uname',$hihi)
                                         ->with('anh',$img);
-    //return $img;
+    
     }
 
 
     public function datphong($id, Request $request){
       
-        // Validator::make($request->all(), [
-        //     'checkin' => 'required',
-        //     'checkout' => 'required',
-        //     'p_slmax' => 'required'
-        //     ],[
-        //     'checkin.required' => 'Bạn chưa nhập ngày nhận phòng',
-        //     'checkout.required'=>'Tên đăng nhập phải có ít nhất 8 kí tự',
-        //     'p_slmax.required' => 'Tên đăng nhập đã tồn tại',
-        //     'checkin.required' > 'checkout.required' => 'Bạn đã chọn sai ngày'
-        //     ])->validate();
+        Validator::make($request->all(), [
+            'checkin' => 'required',
+            'checkout' => 'required',
+            'p_slmax' => 'required'
+            ],[
+            'checkin.required' => 'Bạn chưa nhập ngày nhận phòng',
+            'checkout.required'=>'Tên đăng nhập phải có ít nhất 8 kí tự',
+            'p_slmax.required' => 'Tên đăng nhập đã tồn tại',
+           // 'checkin.required' > 'checkout.required' => 'Bạn đã chọn sai ngày'
+            ])->validate();
         $room = phong::find($id);
         $giohientai = Carbon::now('Asia/Ho_Chi_Minh'); 
 
@@ -93,7 +109,7 @@ class PagesController extends Controller
 
         $ctdd->save();
          Session::flash('alert-info', 'Thêm thành công!!!');
-         return redirect()->route('index');
+         return redirect()->route('dondat');
 
         
 
@@ -106,10 +122,10 @@ class PagesController extends Controller
     }
 
     public function chitietdondat($id){
-      // $chitiet123 = chitietdondat::find($id)->get();
         $chitiet123 = chitietdondat::where('dd_id', $id)->get();
-        //return $chitiet123;
         return view('frontend.pages.chitietdondat')
         ->with('chitiet',$chitiet123);
     }
+
+    
 }

@@ -37,6 +37,7 @@
 			<!-- FORM ĐẶT PHÒNG -->
 			<div class="col-lg-4">
 				<form action="{{route('datphong',['id'=>$p1->p_id])}}" class="p-5 bg-white">
+					  @csrf
 					<div class="p-4 mb-3 bg-white">
 						<h3 class="h5 text-black mb-3">Đặt phòng</h3>
 					</div>
@@ -97,6 +98,45 @@
 				</div>
 			</div>
 		</div>
+		<form action="{{route('comment',['id'=>$p1->p_id])}}" method="post" class="p-5 bg-white">
+  				@csrf
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <label class="font-weight-bold" for="message">Bình luận</label> 
+                  <textarea name="cmt_text" id="message" cols="30" rows="5" class="form-control" placeholder="Nhập vào bình luận...."></textarea>
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <input type="submit" value="Send Message" class="btn btn-primary pill px-4 py-2">
+                </div>
+              </div>
+
+  
+            </form>
+
+		<div class="container mt-3">
+			<div style=" border: 1px solid #eaedef;
+				border-radius: 10px; padding: 3%">
+				@foreach($cmt as $u)
+				<div class="media border p-3 mt-3"id="comment">
+					<div class="media-body" >
+						
+						@foreach($uname as $m)
+						<h6>{{$m->username}} &nbsp&nbsp&nbsp<small><i>{{$u->created_at}}</i></small></h6>
+						@endforeach
+						<p>{{$u->cmt_text}}</p>
+						
+					</div>
+				</div>
+				@endforeach
+			</div>
+			
+		</div>
+		
+
 	</div>
 </div>
 <!-- CONTENT   -->

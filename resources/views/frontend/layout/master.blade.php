@@ -54,8 +54,7 @@
   <script src="asset/frontend/js/mediaelement-and-player.min.js"></script>
 
   <script src="asset/frontend/js/main.js"></script>
-    @yield('script');
-
+    @yield('script')
   <!-- <script>
       document.addEventListener('DOMContentLoaded', function() {
                 var mediaElements = document.querySelectorAll('video, audio'), total = mediaElements.length;

@@ -25,5 +25,7 @@ class comment extends Model
 
     public function user(){
     	return $this->belongsTo('App\users','users_id','users_id');
+    }public function phong(){
+        return $this->belongsTo('App\phong','p_id','p_id');
     }
 }
