@@ -30,8 +30,8 @@ class AuthController extends Controller
         // ]);
 
         $arr = [
-            'username'=>'tienhong1211',
-            'password'=>'matkhau123',
+            'username'=>$request->username,
+            'password'=>$request->password,
         ];
 
         if (Auth::attempt($arr)) {

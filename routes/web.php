@@ -107,13 +107,13 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 		Route::get('/xoa/{id}','AnhLQController@getXoa')->name('del_anhlq');
 	});
 	
+	
+});
+
 	Route::get('/datphong/{id}','PagesController@datphong')->name('datphong');
 
 	Route::get('/dondat','PagesController@dondat')->name('dondat');
 Route::get('/chitietdondat/{id}','PagesController@chitietdondat')->name('chitietdondat');
-	
-});
-
 
 Route::post('/comment/{id}','CommentController@postComment')->name('comment');
 

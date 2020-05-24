@@ -60,7 +60,7 @@
         document.getElementById("get").innerHTML = this.responseText;
       }
     };
-    xmlhttp.open("GET", "./admin/chitietdondat/" + str, true);
+    xmlhttp.open("GET", "./chitietdondat/" + str, true);
     xmlhttp.send();
   }
 }

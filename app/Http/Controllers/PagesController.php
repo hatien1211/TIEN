@@ -52,21 +52,20 @@ class PagesController extends Controller
       
        $cmt = DB::table('comment')
             ->leftJoin('phong', 'phong.p_id', '=', 'comment.p_id')
+            ->leftJoin('users', 'users.users_id', '=', 'comment.users_id')
             ->where('phong.p_id',$id)
-            ->select('*')
+
+            ->select('comment.*','users.username')
             ->get();
-       $hihi = DB::table('comment')->leftJoin('users', 'users.users_id', '=', 'comment.users_id')
-       ->where('comment.p_id',$id)
-       ->select('users.username')
-       ->limit(1)
-       ->get();
-        //return $hihi;
+
+            //return $cmt;
+       
         
 
         //return $cmt1;
         return view('frontend.pages.phong')->with('p1',$phong)
                                             ->with('cmt',$cmt)
-                                            ->with('uname',$hihi)
+                                            
                                         ->with('anh',$img);
     
     }
@@ -108,7 +107,7 @@ class PagesController extends Controller
         $ctdd->p_id = $id;
 
         $ctdd->save();
-         Session::flash('alert-info', 'Thêm thành công!!!');
+        //Session::flash('alert-info', 'Thêm thành công!!!');
          return redirect()->route('dondat');
 
         
@@ -122,7 +121,14 @@ class PagesController extends Controller
     }
 
     public function chitietdondat($id){
-        $chitiet123 = chitietdondat::where('dd_id', $id)->get();
+        //$chitiet123 = chitietdondat::where('dd_id', $id)->get();
+        $chitiet123 = DB::table('chitietdondat')
+            ->leftJoin('dondat', 'dondat.dd_id', '=', 'chitietdondat.dd_id')
+            ->leftJoin('phong', 'phong.p_id', '=', 'chitietdondat.p_id')
+            ->where('chitietdondat.dd_id',$id)
+            ->select('chitietdondat.*','phong.p_ten')
+            ->get();
+            
         return view('frontend.pages.chitietdondat')
         ->with('chitiet',$chitiet123);
     }

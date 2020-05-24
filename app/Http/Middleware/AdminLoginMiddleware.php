@@ -21,7 +21,7 @@ class AdminLoginMiddleware
             if($users->quyen == 1){
                 return $next($request);        
             }else{
-                return redirect()->route('dangnhap');
+                return redirect()->route('index');
             }
         }else{
             return redirect()->route('dangnhap');

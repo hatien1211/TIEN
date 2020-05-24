@@ -12,8 +12,8 @@
                   <input type="text" id="fullname" value="{{$u->dd_id}}" class="form-control"  placeholder="Full Name">
                 </div>
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="fullname">Mã Phòng</label>
-                  <input type="text" id="fullname" value="{{$u->p_id}}" class="form-control"  placeholder="Full Name">
+                  <label class="font-weight-bold" for="fullname">Tên Phòng</label>
+                  <input type="text" id="fullname" value="{{$u->p_ten}}" class="form-control"  placeholder="Full Name">
                 </div>
               </div>
               <div class="row form-group">

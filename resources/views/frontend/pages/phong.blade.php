@@ -44,19 +44,19 @@
 					<div class="row form-group">
 						<div class="col-md-12 mb-3 mb-md-0">
 							<label class="font-weight-bold" for="fullname">Check in</label>
-							<input type="date" id="fullname" name="checkin" class="form-control" placeholder="Ngày nhận phòng">
+							<input type="date" id="fullname" name="checkin" class="form-control" placeholder="Ngày nhận phòng" required="">
 						</div>
 					</div>
 					<div class="row form-group">
 						<div class="col-md-12">
 							<label class="font-weight-bold" for="email">Check out</label>
-							<input type="date" id="fullname" name="checkout" class="form-control" placeholder="Ngày trả phòng">
+							<input type="date" id="fullname" name="checkout" class="form-control" placeholder="Ngày trả phòng" required="">
 						</div>
 					</div>
 					<div class="row form-group">
 						<div class="col-md-12">
 							<label class="font-weight-bold" for="email">Người lớn</label>
-							<input type="number" id="fullname" min='1' max='4' name="p_slmax" class="form-control">
+							<input type="number" id="fullname" min='1' max='4' name="p_slmax" class="form-control" required="">
 						</div>
 					</div>
 					<div class="row form-group">
@@ -72,7 +72,31 @@
 					</div> -->
 					<div class="row form-group">
 						<div class="col-md-12">
-							<input type="submit" value="Book now" class="btn btn-primary pill px-4 py-2">
+							<input type="button" value="Book now" data-toggle="modal" data-target="#myModal" class="btn btn-primary pill px-4 py-2">
+						</div>
+
+						<div class="modal" id="myModal">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									
+									<!-- Modal Header -->
+									<div class="modal-header">
+										<h4 class="modal-title">Thông tin đặt phòng</h4>
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+									</div>
+									
+									<!-- Modal body -->
+									<div class="modal-body">
+										Đặt phòng thành công
+									</div>
+									
+									<!-- Modal footer -->
+									<div class="modal-footer">
+										<button type="submit" class="btn btn-danger" data-dismiss="BOOK">OK</button>
+									</div>
+									
+								</div>
+							</div>
 						</div>
 					</div>
 					
@@ -124,9 +148,9 @@
 				<div class="media border p-3 mt-3"id="comment">
 					<div class="media-body" >
 						
-						@foreach($uname as $m)
-						<h6>{{$m->username}} &nbsp&nbsp&nbsp<small><i>{{$u->created_at}}</i></small></h6>
-						@endforeach
+						
+						<h6>{{$u->username}} &nbsp&nbsp&nbsp<small><i>{{$u->created_at}}</i></small></h6>
+						
 						<p>{{$u->cmt_text}}</p>
 						
 					</div>
