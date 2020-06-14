@@ -51,10 +51,13 @@
             <div class="section-heading text-left">
               <h2 class="mb-5">Thông tin khách sạn</h2>
             </div>
-            <p class="mb-4">My Hotel là một điểm đến tuyệt vời và mang đến cho bạn trải nghiệm thú vị nhất khi đến với chúng tôi. Đến với chúng tối, bạn sẽ được hòa mình vào thiên nhiên thuần khiết, tham gia các hoạt động giải trí, thư giãn để lấy đi nỗi buồn và sự hỗn loạn của cuộc sống.
-            Chúng tôi có đội ngũ nhân viên được đào tạo tốt, chuyên nghiệp và chuyên nghiệp, dịch vụ tận tâm.
-            My Hotel cung cấp đầy đủ các tiện nghi, thủ tục nhận phòng nhanh, phủ sóng wi-fi công cộng miễn phí trong toàn khu nghỉ mát. Điểm nổi bật của là nhà hàng phục vụ cả ẩm thực phương Tây và phương Đông được xây dựng và phục vụ trên tầng cao nhất.
-            </p>
+              <p class="mb-4">My hotel sẽ là một địa điểm tuyệt vời và mang đến cho bạn thật nhiều trải nghiệm. Khi đến với chúng tôi, bạn sẽ được hòa mình vào không khí thiên nhiên thuần khiết, cùng tham gia các hoạt động giải trí, thư giãn để quên đi những nỗi buồn và điều hòa lại sự hỗn loạn trong cuộc sống.
+                Với trang thiết bị hiện đại cùng đội ngũ nhân viên tận tâm, chuyên nghiệp chúng tôi cam kết sẽ làm hài lòng các quý khách hàng.<br>
+                
+                My hotel tọa lạc tại Ninh kiều, Thành phố Cần Thơ.Với lợi thế về vị trí My hotel sẽ là điểm dừng chân nghĩ ngơi thư giản đáng được quan tâm của mọi người khi bước chân đến miền sông nước Cần Thơ.
+                
+              </p>
+             
 
           </div>
         </div>

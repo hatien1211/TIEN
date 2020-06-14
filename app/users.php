@@ -38,9 +38,9 @@ class users extends Authenticatable
    		return $this->hasMany('App\comment','users_id','users_id');// agurement 1: model, arg2: foreignkey of comments on comment, arg3 is primiryKey on users
     }
 
-  public function dondat (){
-      return $this->hasMany('App\dondat','users_id','users_id');
-    }  
+      public function dondat (){
+          return $this->hasMany('App\dondat','users_id','users_id');
+        }  
 
     public function getAuthPassword()
     {

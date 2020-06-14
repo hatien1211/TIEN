@@ -108,15 +108,17 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 	});
 	
 	
+	Route::post('/datphong/{id}','PagesController@datphong')->name('datphong');
+	Route::get('status','PagesController@getPaymentStatus');
+	Route::get('/dondat','PagesController@dondat')->name('dondat');
+	Route::get('/chitietdondat/{id}','PagesController@chitietdondat')->name('chitietdondat');
+	Route::post('/comment/{id}','CommentController@postComment')->name('comment');
+
 });
 
-	Route::get('/datphong/{id}','PagesController@datphong')->name('datphong');
 
-	Route::get('/dondat','PagesController@dondat')->name('dondat');
-Route::get('/chitietdondat/{id}','PagesController@chitietdondat')->name('chitietdondat');
 
-Route::post('/comment/{id}','CommentController@postComment')->name('comment');
 
-Route::get('/','PagesController@header')->name('index');
+Route::get('/','PagesController@index')->name('index');
 Route::get('dichvu','PagesController@dichvu')->name('dichvu');
 Route::get('phongdetail/{id}','PagesController@detailphong')->name('chitietphong');

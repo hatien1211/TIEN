@@ -36,10 +36,29 @@
 			<!-- THÔNG TIN PHÒNG        -->
 			<!-- FORM ĐẶT PHÒNG -->
 			<div class="col-lg-4">
-				<form action="{{route('datphong',['id'=>$p1->p_id])}}" class="p-5 bg-white">
+				<form action="{{route('datphong',['id'=>$p1->p_id])}}" id="payment-form" class="p-5 bg-white" method="post">
 					  @csrf
+
+						
 					<div class="p-4 mb-3 bg-white">
 						<h3 class="h5 text-black mb-3">Đặt phòng</h3>
+						 @if ($message = Session::get('success'))
+					        <div class="w3-panel w3-green w3-display-container">
+					            <span onclick="this.parentElement.style.display='none'"
+					    				class="w3-button w3-green w3-large w3-display-topright">&times;</span>
+					            <p>{!! $message !!}</p>
+					        </div>
+					        <?php Session::forget('success');?>
+					        @endif
+
+					        @if ($message = Session::get('error'))
+					        <div class="w3-panel w3-red w3-display-container">
+					            <span onclick="this.parentElement.style.display='none'"
+					    				class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+					            <p>{!! $message !!}</p>
+					        </div>
+					        <?php Session::forget('error');?>
+					     @endif
 					</div>
 					<div class="row form-group">
 						<div class="col-md-12 mb-3 mb-md-0">
@@ -65,41 +84,13 @@
 							<input type="number" id="phone" min="0" max="2" class="form-control">
 						</div>
 					</div>
-					<!-- <div class="row form-group">
-						<div class="col-md-12">
-							<br><br>
-						</div>
-					</div> -->
+					
 					<div class="row form-group">
 						<div class="col-md-12">
-							<input type="button" value="Book now" data-toggle="modal" data-target="#myModal" class="btn btn-primary pill px-4 py-2">
-						</div>
-
-						<div class="modal" id="myModal">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									
-									<!-- Modal Header -->
-									<div class="modal-header">
-										<h4 class="modal-title">Thông tin đặt phòng</h4>
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-									</div>
-									
-									<!-- Modal body -->
-									<div class="modal-body">
-										Đặt phòng thành công
-									</div>
-									
-									<!-- Modal footer -->
-									<div class="modal-footer">
-										<button type="submit" class="btn btn-danger" data-dismiss="BOOK">OK</button>
-									</div>
-									
-								</div>
-							</div>
+							<input type="submit" id="amount" value="Book now" class="btn btn-primary pill px-4 py-2">
+							
 						</div>
 					</div>
-					
 				</form>
 			</div>
 			<!-- FORM ĐẶT PHÒNG -->
@@ -147,10 +138,7 @@
 				@foreach($cmt as $u)
 				<div class="media border p-3 mt-3"id="comment">
 					<div class="media-body" >
-						
-						
-						<h6>{{$u->username}} &nbsp&nbsp&nbsp<small><i>{{$u->created_at}}</i></small></h6>
-						
+						<h6>{{$u->username}} &nbsp&nbsp&nbsp<small><i>  {{date('d/m/Y | H:i',strtotime($u->created_at))}}</i></small></h6>
 						<p>{{$u->cmt_text}}</p>
 						
 					</div>

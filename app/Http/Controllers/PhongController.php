@@ -24,7 +24,7 @@ class PhongController extends Controller
             'p_tomtat' => 'required',
             'p_slmax' => 'required',
             'p_slp' => 'required',
-            'p_gia' => 'required|min:6'
+            'p_gia' => 'required|min:2|max:4'
             
             ],[
             'p_ten.required' => 'Bạn chưa nhập tên phòng',
@@ -34,7 +34,8 @@ class PhongController extends Controller
             'p_slmax.required'=>'Bạn chưa điền vào thông tin số lượng người tối đa của phòng',
             'p_slp.required'=>'Bạn chưa điền vào thông tin số lượng phòng',
             'p_gia.required'=>'Bạn chưa điền vào thông tin gia của phòng',
-            'dv_gia.min'=>'Thông tin giá phòng phải ít nhất 8 kí tự'
+            'p_gia.min'=>'Thông tin giá phòng phải ít nhất 2 kí tự',
+            'p_gia.max'=>'Thông tin giá phòng phải không quá 4 kí tự'
             ])->validate();
 
         $phong = new phong();
@@ -82,7 +83,7 @@ class PhongController extends Controller
             'p_tomtat' => 'required',
             'p_slmax' => 'required',
             'p_slp' => 'required',
-            'p_gia' => 'required|min:6'
+            'p_gia' => 'required|min:2|max:4'
             ],[
             'p_ten.required' => 'Bạn chưa nhập tên phòng',
             'p_ten.unique'=>'Tên phòng đã tồn tại',
@@ -91,7 +92,8 @@ class PhongController extends Controller
             'p_slmax.required'=>'Bạn chưa điền vào thông tin số lượng người tối đa của phòng',
             'p_slp.required'=>'Bạn chưa điền vào thông tin số lượng phòng',
             'p_gia.required'=>'Bạn chưa điền vào thông tin gia của phòng',
-            'dv_gia.min'=>'Thông tin giá phòng phải ít nhất 8 kí tự'
+            'p_gia.min'=>'Thông tin giá phòng phải ít nhất 2 kí tự',
+            'p_gia.max'=>'Thông tin giá phòng phải không quá 4 kí tự'
             ])->validate();
 
         $phong =phong::find($id);

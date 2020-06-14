@@ -7,6 +7,23 @@
       <div class="col-md-12 col-lg-8 mb-5" style="width: 100%">
         <center>
           <h3 class="h5 text-black mb-3">Thông tin đặt phòng</h3>
+          @if ($message = Session::get('success'))
+                  <div class="w3-panel w3-green w3-display-container">
+                      <span onclick="this.parentElement.style.display='none'"
+                      class="w3-button w3-green w3-large w3-display-topright">&times;</span>
+                      <p>{!! $message !!}</p>
+                  </div>
+                  <?php Session::forget('success');?>
+                  @endif
+
+                  @if ($message = Session::get('error'))
+                  <div class="w3-panel w3-red w3-display-container">
+                      <span onclick="this.parentElement.style.display='none'"
+                      class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+                      <p>{!! $message !!}</p>
+                  </div>
+                  <?php Session::forget('error');?>
+               @endif
           <table class="table table-hover" >
 
           <thead>
@@ -20,14 +37,13 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($dondat as $u)
+            @foreach($don as $u)
             <tr align="center">
               <td> {{$u->dd_id}} </td>
-              <td> {{$u->users->username}} </td>
-              <td> {{$u->ngaylap}}</td>
+              <td> {{$u->username}} </td>
+              <td> {{date('d/m/Y',strtotime($u->ngaylap))}} </td>
               <td> {{number_format($u->tongtien)}}</td>
               <td><i class='fas fa-trash-alt'></i>
-                <!-- <a href="{{route('chitietdondat',['id'=>$u->dd_id])}}"><button type="button" class="btn btn-info">Chi tiết</button></a></td> -->
                 <button type="button" class="btn btn-info" onclick="showchitietdondat({{$u->dd_id}})">Chi tiết</button>
               </tr>
               @endforeach
